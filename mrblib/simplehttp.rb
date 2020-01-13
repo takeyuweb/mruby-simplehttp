@@ -121,6 +121,7 @@ class SimpleHttp
         ssl = PolarSSL::SSL.new
         ssl.set_endpoint PolarSSL::SSL::SSL_IS_CLIENT
         ssl.set_rng ctr_drbg
+        ssl.set_hostname @uri[:address]
         ssl.set_socket socket
         ssl.handshake
         ssl.write request_header
